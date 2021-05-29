@@ -19,6 +19,9 @@ Stack overflow trend requires:
     - nltk
     - re
     - sklearn
+    - plotly
+    - json
+    - flask
 ## Project Motivation
 being able to reliably distinguish the disasters in the emergency and its category is vital to able to properly help the people on time. To be able to do this, is simple but efficient dashboard designed, which is able to be fed with the massage and it gives the categories.
 
