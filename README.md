@@ -34,7 +34,7 @@ This project consists of three main parts:
 
 -	Flask Web app:
 
-    The flask web app provides the web based user interface which is connected with the database and pipelines and generate the visualisations.
+    The flask web app provides the web-based user interface which is connected with the database and pipelines and generate the visualisations.
  
 
 
