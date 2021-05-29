@@ -17,11 +17,20 @@ Stack overflow trend requires:
     - matplotlib
     - seaborn
 ## Project Motivation
-being able to reliably distinguish the disasters in the emergency and its category is vital to able to properly help the people on time. To be able to do this, is simple but efficient dashboard designed, which is able to be fed with the massage and it gives the categories.  
+being able to reliably distinguish the disasters in the emergency and its category is vital to able to properly help the people on time. To be able to do this, is simple but efficient dashboard designed, which is able to be fed with the massage and it gives the categories.
+
 ## File Descriptions
-The available notebook to prepare the data from stack-overflow-developer-surveys 2017-2020 for this analyse work.
-The notebook is created in Kaggle and the datas are inported from "Stack Overflow Developer Surveys (2017-2020)"
-There is a `.ipynb` data as a copy of the Notebook with nessesary codes and can be finde hier: [here](https://github.com/mrf919/Stack-overflow-trend) 
+This project consists of three main parts:
+-	ETL Pipeline:
+    This pipeline performs the Extract, Transform, and Load process to prepare the learning data as clean input for the Machine learning process. This data will be saved in a      SQLite database.
+
+-	ML Pipeline:
+    Using the NLTK method and multi-output classification, this pipeline uses the massages to predict their categories. 
+
+-	Flask Web app:
+    The flask web app provides the web based user interface which is connected with the database and pipelines and generate the visualisations.
+ 
+
 
 ## Results
 The findings and the resualts of the code is availble [here](https://medium.com/@m.r.farhood/is-there-any-trend-change-in-tools-used-c4cbb41d4710)
