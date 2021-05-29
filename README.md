@@ -30,7 +30,7 @@ This project consists of three main parts:
 
 -	ML Pipeline:
 
-    Using the NLTK method and multi-output classification, this pipeline uses the massages to predict their categories. This pipeline can be found in "train_classifier.py".
+    Using the NLTK method and multi-output classification, this pipeline uses the massages to predict their categories. This pipeline can be found in [train_classifier.py](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/train_classifier.py).
 
 -	Flask Web app:
 
