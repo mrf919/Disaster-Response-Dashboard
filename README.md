@@ -23,12 +23,14 @@ being able to reliably distinguish the disasters in the emergency and its catego
 This project consists of three main parts:
 -	ETL Pipeline:
 
-This pipeline performs the Extract, Transform, and Load process to prepare the learning data as clean input for the Machine learning process. This data will be saved in a      SQLite database.
+    This pipeline performs the Extract, Transform, and Load process to prepare the learning data as clean input for the Machine learning process. This data will be saved in a      SQLite database.
 
 -	ML Pipeline:
+
     Using the NLTK method and multi-output classification, this pipeline uses the massages to predict their categories. 
 
 -	Flask Web app:
+
     The flask web app provides the web based user interface which is connected with the database and pipelines and generate the visualisations.
  
 
