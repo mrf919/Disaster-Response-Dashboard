@@ -39,7 +39,10 @@ This project consists of three main parts:
 
     The flask web app provides the web-based user interface which is connected with the database and pipelines and generate the visualisations.
  
-
+## instruction
+to run this project, the follosing commands should be executed in the project root directory:
+    - python data/process_data.py data/[messages_filepath] data/disaster_categories.csv data/DisasterResponse.db
+    for the "disaster_messages.csv" and disaster_categories.csv and 
 
 ## Results
 The findings and the resualts of the code is availble [here](https://medium.com/@m.r.farhood/is-there-any-trend-change-in-tools-used-c4cbb41d4710)
