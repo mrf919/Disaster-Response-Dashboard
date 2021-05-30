@@ -43,7 +43,14 @@ This project consists of three main parts:
 to run this project, the follosing commands should be executed in the project root directory:
 
     -   python data/process_data.py [messages_filepath] [categories_filepath] [database_filepath]
-        [messages_filepath] is the path to the .csv data which contains the "disaster_messages"
+    
+   [messages_filepath] is the path to the .csv data which contains the "disaster_messages"
+   [categories_filepath] is the path to the .csv data which contains the "disaster_categories"
+   [database_filepath] is the path to the .db data which contains the which is going to stor the data
+   
+   -    python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
+   
+   
 
 ## Results
 The findings and the resualts of the code is availble [here](https://medium.com/@m.r.farhood/is-there-any-trend-change-in-tools-used-c4cbb41d4710)
