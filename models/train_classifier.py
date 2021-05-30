@@ -1,3 +1,4 @@
+# the ML Pipeline
 import sys
 import nltk
 nltk.download(['punkt', 'wordnet'])
@@ -21,6 +22,7 @@ from sqlalchemy import create_engine
 from sklearn.model_selection import GridSearchCV
 from nltk.corpus import stopwords
 
+# function for loading data from the sqlite database
 def load_data(database_filepath):
     import os
     print(os.getcwd())
@@ -33,7 +35,7 @@ def load_data(database_filepath):
     category_names = Y.columns
     return X, Y , category_names
 
-
+#tokenizing function
 def tokenize(text):
     stop_words = stopwords.words("english")
     lemmatizer = WordNetLemmatizer()
@@ -42,7 +44,7 @@ def tokenize(text):
     tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
     return tokens
 
-
+# pipeline bildup function
 def build_model():
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
@@ -59,7 +61,7 @@ def build_model():
     
     return pipeline 
 
-
+# Model evaluation function
 def evaluate_model(model, X_test, Y_test, category_names):
     y_pred = model.predict(X_test)
     labels = np.unique(Y_test)
@@ -67,14 +69,15 @@ def evaluate_model(model, X_test, Y_test, category_names):
     for col in category_names:
         print(col)
         print(classification_report(Y_test[col], y_pred[col],labels=labels))
-        
+
+# function to xport the model as a pickle file
 def save_model(model, model_filepath):
     import pickle
 
     filename = model_filepath
     pickle.dump(model, open(filename, 'wb'))
 
-
+# the main function to perform the ML pipeline sarting with asking the filepathes
 def main():
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
