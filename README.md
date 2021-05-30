@@ -42,13 +42,13 @@ This project consists of three main parts:
 ## instruction
 to run this project, the follosing commands should be executed in the project root directory:
 
-    -   python data/process_data.py [messages_filepath] [categories_filepath] [database_filepath]
+    python data/process_data.py [messages_filepath] [categories_filepath] [database_filepath]
     
    [messages_filepath] is the path to the .csv data which contains the "disaster_messages"
    [categories_filepath] is the path to the .csv data which contains the "disaster_categories"
    [database_filepath] is the path to the .db data which contains the which is going to stor the data
    
-   -    python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
+    python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
    
    
 
