@@ -51,6 +51,7 @@ def build_model():
         ('tfidf', TfidfTransformer()),
         ('clf', MultiOutputClassifier(KNeighborsClassifier()))
     ])
+    # the parameter check is perform with the grid search method und the best results are used in the pipeline
     parameters = {'clf__estimator__leaf_size': 30,
                   'clf__n_jobs': 1,
                   'tfidf__use_idf': False,
