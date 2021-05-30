@@ -2,7 +2,7 @@ import sys
 # import libraries
 import pandas as pd
 
-
+# the function for loading data from defined path (data extraction)
 def load_data(messages_filepath, categories_filepath):
     # load messages dataset
     messages = pd.read_csv(messages_filepath)
@@ -12,6 +12,8 @@ def load_data(messages_filepath, categories_filepath):
     # merge datasets
     df = messages.merge(categories, on=('id'))
     return df
+
+# function for data cleaning
 def clean_data(df):
     # create a dataframe of the 36 individual category columns
     categories = df.categories.str.split(pat = ';',expand=True )
@@ -34,6 +36,7 @@ def clean_data(df):
     # drop duplicates
     df=df.drop_duplicates()
     return df
+# fuction for saving the data in sqlite data base on the given path
 def save_data(df, database_filepath):
     #Save the clean dataset into an sqlite database
     from sqlalchemy import create_engine
@@ -41,7 +44,7 @@ def save_data(df, database_filepath):
     engine = create_engine(eng)
     df.to_sql('message', engine, index=False)  
 
-
+# the main function including the ETL Pipeline, beginning with the file pathes
 def main():
     if len(sys.argv) == 4:
 
