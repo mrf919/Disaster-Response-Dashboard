@@ -41,6 +41,7 @@ This project consists of three main parts:
  
 ## instruction
 to run this project, the follosing commands should be executed in the project root directory:
+
     -   python data/process_data.py [messages_filepath] [categories_filepath] [database_filepath]
         [messages_filepath] is the path to the .csv data which contains the "disaster_messages"
 
