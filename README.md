@@ -41,6 +41,7 @@ This project consists of three main parts:
  
 ## instruction
 to run this project, the follosing commands should be executed in the project root directory:
+1- 
 
     python data/process_data.py [messages_filepath] [categories_filepath] [database_filepath]
     
@@ -54,7 +55,7 @@ to run this project, the follosing commands should be executed in the project ro
     python models/train_classifier.py [database_filepath] models/classifier.pkl
     
     
-   [database_filepath] is again the same path to the .db data which contains the which is going to stor the data
+   [database_filepath] is again the same path to the .db data which contains the which is going to store the data
    
 
 ## Results
