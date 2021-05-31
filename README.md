@@ -59,7 +59,11 @@ to run this project, the follosing commands should be executed in the project ro
     
    [database_filepath] is again the same path to the .db data which contains the which is going to store the data
    
+3- Starting the web app
 
+    python run.py
+    
+    
 ## Results
 The findings and the resualts of the code is availble [here](https://medium.com/@m.r.farhood/is-there-any-trend-change-in-tools-used-c4cbb41d4710)
 
