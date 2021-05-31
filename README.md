@@ -73,8 +73,6 @@ the connection link consists of
 
     https://SPACEID-3001.SPACEDOMAIN
 
-## Results
-The findings and the resualts of the code is availble [here](https://medium.com/@m.r.farhood/is-there-any-trend-change-in-tools-used-c4cbb41d4710)
 
 ## Licensing, Authors, Acknowledgements
 The findings and the results of the code is available [here](https://www.kaggle.com/haakakak/stack-overflow-developer-surveys-20152020)
