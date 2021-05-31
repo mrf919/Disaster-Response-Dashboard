@@ -63,7 +63,16 @@ to run this project, the follosing commands should be executed in the project ro
 
     python run.py
     
+4- The connection link:
+
+    env|grep WORK
     
+   (in a new Terminal)
+   
+the connection link consists of 
+
+    https://SPACEID-3001.SPACEDOMAIN
+
 ## Results
 The findings and the resualts of the code is availble [here](https://medium.com/@m.r.farhood/is-there-any-trend-change-in-tools-used-c4cbb41d4710)
 
