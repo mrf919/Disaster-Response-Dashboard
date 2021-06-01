@@ -52,7 +52,7 @@ def tokenize(text):
     The function to tokenize and lemmatize the text.
     
     Inputs:
-        text:                 the text which needs to be tokenized
+        text:                the text which needs to be tokenized
         
     Outputs:
         tokens:              tokens which can be used in machine learning
@@ -100,7 +100,7 @@ def evaluate_model(model, X_test, Y_test, category_names):
         Y_test:                   the test split of the Y data
         category_names:           labels of the categries columns
     Output:
-        classification_report:    
+        classification_report:    the report indicating the f1 score for each category
         
     """
     y_pred = model.predict(X_test)
@@ -112,6 +112,12 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 # function to xport the model as a pickle file
 def save_model(model, model_filepath):
+    """
+    The function to save the optimal model as a pickle file. 
+    Inputs: 
+        model :                   the machine learning model
+        model_filepath:           File path to the .pkl data       
+    """
     import pickle
 
     filename = model_filepath
@@ -119,6 +125,9 @@ def save_model(model, model_filepath):
 
 # the main function to perform the ML pipeline sarting with asking the filepathes
 def main():
+    """
+    The function to run the pipeline including building the model, train, evaluate and save it.      
+    """
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
