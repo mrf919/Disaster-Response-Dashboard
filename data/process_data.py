@@ -4,6 +4,16 @@ import pandas as pd
 
 # the function for loading data from defined path (data extraction)
 def load_data(messages_filepath, categories_filepath):
+    """
+    The function to load the data.
+    
+    Inputs:
+        messages_filepath:   File path to the .csv data contains the messages
+        categories_filepath: File path to the .csv data contains the categories
+        
+    Returns:
+        df: Dataframe consisting of messages and categories merged together
+    """
     # load messages dataset
     messages = pd.read_csv(messages_filepath)
     # load categories dataset
@@ -15,6 +25,15 @@ def load_data(messages_filepath, categories_filepath):
 
 # function for data cleaning
 def clean_data(df):
+    """
+    The function to clean the category Dataframe.
+    
+    Inputs:
+        df:   Dataframe needs to be cleaned
+        
+    Returns:
+        df: cleaned Categories Dataframe
+    """
     # create a dataframe of the 36 individual category columns
     categories = df.categories.str.split(pat = ';',expand=True )
     categories = categories.rename(columns=categories.iloc[0])
