@@ -42,8 +42,9 @@ def load_data(database_filepath):
     df = pd.read_sql_table('message', engine)
     X = df['message']
     Y = df.drop(columns= ['id','message', 'original', 'genre'], axis = 1)
-    X = X.head(100)
-    Y = Y.head(100)
+    # as small test version just uncomment the following:
+    #X = X.head(100)
+    #Y = Y.head(100)
 
     category_names = Y.columns
     return X, Y , category_names
