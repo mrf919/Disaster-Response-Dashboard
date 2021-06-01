@@ -75,7 +75,7 @@ def save_data(df, database_filepath):
 # the main function including the ETL Pipeline, beginning with the file pathes
 def main():
     """
-    The function to run the .
+    The function to run the.
     
     Inputs:
         df:                 Dataframe to be saved
