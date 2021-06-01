@@ -26,13 +26,13 @@ def load_data(messages_filepath, categories_filepath):
 # function for data cleaning
 def clean_data(df):
     """
-    The function to clean the category Dataframe.
+    The function to clean the categories columns of the Dataframe.
     
     Inputs:
         df:   Dataframe needs to be cleaned
         
     Returns:
-        df: cleaned Categories Dataframe
+        df: cleaned Dataframe
     """
     # create a dataframe of the 36 individual category columns
     categories = df.categories.str.split(pat = ';',expand=True )
@@ -54,9 +54,18 @@ def clean_data(df):
     df = pd.concat([df, categories], axis = 1)
     # drop duplicates
     df=df.drop_duplicates()
+    # drop the rows with related value = 2
+    df = df.query('related != 2')
     return df
 # fuction for saving the data in sqlite data base on the given path
 def save_data(df, database_filepath):
+    """
+    The function to the Dataframe in a sqlite database.
+    
+    Inputs:
+        df:                 Dataframe to be saved
+        database_filepath:  File path to the database to save the dataframe
+    """
     #Save the clean dataset into an sqlite database
     from sqlalchemy import create_engine
     eng = 'sqlite:///' + database_filepath
@@ -65,6 +74,13 @@ def save_data(df, database_filepath):
 
 # the main function including the ETL Pipeline, beginning with the file pathes
 def main():
+    """
+    The function to run the .
+    
+    Inputs:
+        df:                 Dataframe to be saved
+        database_filepath:  File path to the database to save the dataframe
+    """
     if len(sys.argv) == 4:
 
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]
