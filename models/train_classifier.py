@@ -42,6 +42,8 @@ def load_data(database_filepath):
     df = pd.read_sql_table('message', engine)
     X = df['message']
     Y = df.drop(columns= ['id','message', 'original', 'genre'], axis = 1)
+    X = X.head(100)
+    Y = Y.head(100)
 
     category_names = Y.columns
     return X, Y , category_names
@@ -80,15 +82,16 @@ def build_model():
         ('clf', MultiOutputClassifier(KNeighborsClassifier()))
     ])
     # the parameter check is perform with the grid search method und the best results are used in the pipeline
-    parameters = {'clf__estimator__leaf_size': 30,
-                  'clf__n_jobs': 1,
-                  'tfidf__use_idf': False,
-                  'vect__max_df': 0.5,
-                  'vect__max_features': None,
-                  'vect__ngram_range': (1, 1)}
+    parameters = {'clf__estimator__leaf_size': (20, 30, 50),
+                  'clf__estimator__n_neighbors': (5,10,36),
+                  'clf__n_jobs': (1,2),
+                  'vect__max_df': (0.5, 0.7,1),
+                  'vect__ngram_range': ((1, 1), (1, 2),(2,2))}
     
-    
-    return pipeline 
+
+    cv = GridSearchCV(pipeline, param_grid=parameters)
+
+    return cv
 
 # Model evaluation function
 def evaluate_model(model, X_test, Y_test, category_names):
@@ -109,7 +112,8 @@ def evaluate_model(model, X_test, Y_test, category_names):
     for col in category_names:
         print(col)
         print(classification_report(Y_test[col], y_pred[col],labels=labels))
-
+    print("\nBest Parameters:", model.best_params_)
+    model.parameters = model.best_params_
 # function to xport the model as a pickle file
 def save_model(model, model_filepath):
     """
