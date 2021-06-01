@@ -24,6 +24,17 @@ from nltk.corpus import stopwords
 
 # function for loading data from the sqlite database
 def load_data(database_filepath):
+    """
+    The function to read the data from the database.
+    
+    Inputs:
+            database_filepath:  File path to the database to save the dataframe
+            
+    Outputs: 
+        X             :     Dataframe containg the X data to train the ML pipeline
+        Y             :     Dataframe containg the X data to train the ML pipeline
+        category_names:     labels of the categries columns
+    """
     import os
     print(os.getcwd())
     eng = 'sqlite:///' + database_filepath
@@ -37,6 +48,16 @@ def load_data(database_filepath):
 
 #tokenizing function
 def tokenize(text):
+    """
+    The function to tokenize and lemmatize the text.
+    
+    Inputs:
+        text:                 the text which needs to be tokenized
+        
+    Outputs:
+        tokens:              tokens which can be used in machine learning
+     
+    """
     stop_words = stopwords.words("english")
     lemmatizer = WordNetLemmatizer()
     text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
@@ -46,6 +67,13 @@ def tokenize(text):
 
 # pipeline bildup function
 def build_model():
+    """
+    The function to build the machine learning pipeline using NLTK with GridSearchCV. 
+    
+    Output:
+        pipeline:                 contains the pipeline model with the GridSearchCV Parameters
+        
+    """
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -64,6 +92,17 @@ def build_model():
 
 # Model evaluation function
 def evaluate_model(model, X_test, Y_test, category_names):
+    """
+    The function to evaluate the trained model using the test data. 
+    Inputs: 
+        model :                   the machine learning model
+        X_test:                   the test split of the X data
+        Y_test:                   the test split of the Y data
+        category_names:           labels of the categries columns
+    Output:
+        classification_report:    
+        
+    """
     y_pred = model.predict(X_test)
     labels = np.unique(Y_test)
     y_pred =pd.DataFrame(np.array(y_pred),columns=category_names)
