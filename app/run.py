@@ -42,7 +42,8 @@ def tokenize(text):
     return tokens
 
 # load data
-engine = create_engine('sqlite:///data/DisasterResponse.db')
+eng = 'sqlite:///' + database_filepath
+engine = create_engine(eng)
 df = pd.read_sql_table('message', engine)
 X = df['message']
 Y = df.drop(columns= ['id','message', 'original', 'genre'], axis = 1)
