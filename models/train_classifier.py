@@ -110,9 +110,7 @@ def evaluate_model(model, X_test, Y_test, category_names):
     y_pred = model.predict(X_test)
     labels = np.unique(Y_test)
     y_pred =pd.DataFrame(np.array(y_pred),columns=category_names)
-    for col in category_names:
-        print(col)
-        print(classification_report(Y_test[col], y_pred[col],labels=labels))
+    print(classification_report(Y_test, y_pred, target_names=category_names))
     print("\nBest Parameters:", model.best_params_)
     model.parameters = model.best_params_
 # function to xport the model as a pickle file
