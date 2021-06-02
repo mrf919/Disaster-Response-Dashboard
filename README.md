@@ -61,7 +61,7 @@ to run this project, the follosing commands should be executed in the project ro
    
 3- Starting the web app
 
-    python run.py
+    python app/run.py
     
 4- The connection link:
 
