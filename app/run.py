@@ -30,6 +30,7 @@ from sqlalchemy import create_engine
 from sklearn.model_selection import GridSearchCV
 from nltk.corpus import stopwords
 
+database_filepath = sys.argv[1]
 
 app = Flask(__name__)
 
