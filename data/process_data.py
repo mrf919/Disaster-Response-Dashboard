@@ -70,7 +70,7 @@ def save_data(df, database_filepath):
     from sqlalchemy import create_engine
     eng = 'sqlite:///' + database_filepath
     engine = create_engine(eng)
-    df.to_sql('message', engine, index=False)  
+    df.to_sql('message', engine, index=False, if_exists= 'replace')   
 
 # the main function including the ETL Pipeline, beginning with the file pathes
 def main():
