@@ -18,7 +18,7 @@ Stack overflow trend requires:
     - seaborn
     - nltk
     - re
-    - sklearn
+    - sklearn (>= 0.20)
     - plotly
     - json
     - flask
