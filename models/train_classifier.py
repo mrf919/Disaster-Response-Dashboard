@@ -34,6 +34,7 @@ def load_data(database_filepath):
         X             :     Dataframe containg the X data to train the ML pipeline
         Y             :     Dataframe containg the X data to train the ML pipeline
         category_names:     labels of the categries columns
+        engine        :     the Sqlite engine to connect to the database
     """
     import os
     print(os.getcwd())
@@ -47,7 +48,7 @@ def load_data(database_filepath):
     #Y = Y.head(100)
 
     category_names = Y.columns
-    return X, Y , category_names
+    return X, Y , category_names, engine
 
 #tokenizing function
 def tokenize(text):
@@ -105,15 +106,20 @@ def evaluate_model(model, X_test, Y_test, category_names):
         category_names:           labels of the categries columns
     Output:
         classification_report:    the report indicating the f1 score for each category
+        cl_df                :    classification report as a dataframe
         
     """
     y_pred = model.predict(X_test)
     labels = np.unique(Y_test)
     y_pred =pd.DataFrame(np.array(y_pred),columns=category_names)
     print(classification_report(Y_test, y_pred, target_names=category_names))
+    cl=classification_report(Y_test, y_pred, target_names=category_names, output_dict = True)
+    cl_df = pd.DataFrame.from_dict(cl)
     print("\nBest Parameters:", model.best_params_)
     model.parameters = model.best_params_
-# function to xport the model as a pickle file
+    return cl_df
+    
+# function to export the model as a pickle file
 def save_model(model, model_filepath):
     """
     The function to save the optimal model as a pickle file. 
@@ -126,6 +132,18 @@ def save_model(model, model_filepath):
     filename = model_filepath
     pickle.dump(model, open(filename, 'wb'))
 
+# function to export the classification report to the Database
+def save_classification_report(cl_df, engine):
+    """
+    The function to classification report to the Database. 
+    Inputs: 
+        cl_df         :    classification report as a dataframe
+        engine        :     the Sqlite engine to connect to the database      
+        
+    """    
+    cl_df.to_sql('classification_report', engine, index=False, if_exists= 'replace')
+
+
 # the main function to perform the ML pipeline sarting with asking the filepathes
 def main():
     """
@@ -134,7 +152,7 @@ def main():
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
-        X, Y, category_names = load_data(database_filepath)
+        X, Y, category_names, engine = load_data(database_filepath)
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
         
         print('Building model...')
@@ -144,13 +162,17 @@ def main():
         model.fit(X_train, Y_train)
         
         print('Evaluating model...')
-        evaluate_model(model, X_test, Y_test, category_names)
+        cl_df = evaluate_model(model, X_test, Y_test, category_names)
 
         print('Saving model...\n    MODEL: {}'.format(model_filepath))
         save_model(model, model_filepath)
-
+        
         print('Trained model saved!')
-
+        
+        print('Saving classification report...')
+        save_classification_report(cl_df, engine)
+        
+      
     else:
         print('Please provide the filepath of the disaster messages database '\
               'as the first argument and the filepath of the pickle file to '\
