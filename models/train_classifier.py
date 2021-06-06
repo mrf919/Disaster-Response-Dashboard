@@ -90,7 +90,7 @@ def build_model():
                   'vect__ngram_range': ((1, 1), (1, 2),(2,2))}
     
 
-    cv = GridSearchCV(pipeline, param_grid=parameters)
+    cv = GridSearchCV(pipeline, param_grid=parameters, verbose=3)
 
     return cv
 
