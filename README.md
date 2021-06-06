@@ -29,7 +29,7 @@ being able to reliably distinguish the disasters in the emergency and its catego
 This project consists of three main parts:
 -	ETL Pipeline:
 
-    This pipeline performs the Extract, Transform, and Load process to prepare the learning data as clean input for the Machine learning process. This data will be saved in a       SQLite database. This pipeline can be found in [process_data.py](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/data/process_data.py).
+    This pipeline performs the Extract, Transform, and Load process to prepare the learning data as clean input for the Machine learning process. This data will be saved in a       [SQLite database](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/data/DisasterResponse.db). This pipeline can be found in [process_data.py](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/data/process_data.py).
     To perform this task, there are two .csv data needed. The [disaster_categories.csv](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/data/disaster_categories.csv) and [disaster_messages](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/data/disaster_messages.csv) which can be replaced with the .csv data having the same format and including similar infomation.
 
 -	ML Pipeline:
@@ -38,7 +38,7 @@ This project consists of three main parts:
 
 -	Flask Web app:
 
-    The flask web app provides the web-based user interface which is connected with the database and pipelines and generate the visualisations.
+    The flask web app provides the web-based user interface which is connected with the database and pipelines and generate the visualisations. The [master.html](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/app/templates/master.html) includes the HTML format of the webpage and [go.html](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/app/templates/go.html) highlights the gategories regarding the searched massege.
  
 ## instruction
 to run this project, the follosing commands should be executed in the project root directory:
