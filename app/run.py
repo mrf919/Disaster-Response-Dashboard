@@ -48,6 +48,7 @@ engine = create_engine(eng)
 df = pd.read_sql_table('message', engine)
 X = df['message']
 Y = df.drop(columns= ['id','message', 'original', 'genre'], axis = 1)
+cl_df =  pd.read_sql_table('classification_report', engine)
 
 category_names = Y.columns
 # load model
@@ -84,7 +85,26 @@ def index():
                     'title': "Genre"
                 }
             }
+        },
+        {
+            'data': [
+                Bar(
+                    x=category_names,
+                    y=cl_df.iloc[0]
+                )
+            ],
+
+            'layout': {
+                'title': 'f1 Score for categories',
+                'yaxis': {
+                    'title': "f1 Score"
+                },
+                'xaxis': {
+                    'title': "categories"
+                }
+            }
         }
+        
     ]
     
     # encode plotly graphs in JSON
