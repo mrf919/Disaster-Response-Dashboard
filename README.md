@@ -29,7 +29,8 @@ being able to reliably distinguish the disasters in the emergency and its catego
 This project consists of three main parts:
 -	ETL Pipeline:
 
-    This pipeline performs the Extract, Transform, and Load process to prepare the learning data as clean input for the Machine learning process. This data will be saved in a      SQLite database. This pipeline can be found in [process_data.py](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/data/process_data.py).
+    This pipeline performs the Extract, Transform, and Load process to prepare the learning data as clean input for the Machine learning process. This data will be saved in a       SQLite database. This pipeline can be found in [process_data.py](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/data/process_data.py).
+    To perform this task, there are two .csv data needed. The [disaster_categories.csv](https://github.com/mrf919/Disaster-Response-  Dashboard/blob/main/data/disaster_categories.csv) and [disaster_messages](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/data/disaster_messages.csv)
 
 -	ML Pipeline:
 
