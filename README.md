@@ -41,7 +41,7 @@ This project consists of three main parts:
     The flask web app provides the web-based user interface which is connected with the database and pipelines and generate the visualisations. The [master.html](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/app/templates/master.html) includes the HTML format of the webpage and [go.html](https://github.com/mrf919/Disaster-Response-Dashboard/blob/main/app/templates/go.html) highlights the gategories regarding the searched massege.
  
 ## instruction
-to run this project, the follosing commands should be executed in the project root directory:
+to run this project, the follosing commands should be executed in the project root directory (please be sure to update the sklearn):
 
 1-  Runing the ETL pipeline:
   
